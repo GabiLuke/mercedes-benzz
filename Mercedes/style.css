@@ -1,0 +1,759 @@
+/* =======================================================
+   VARIABLES GLOBALES
+========================================================= */
+:root {
+  /* =============================
+     COLORES
+  ============================== */
+  --color-primary: #3498db;           /* Color primario (azul) */
+  --color-secondary: #2ecc71;         /* Color secundario (verde) */
+  --color-dark: #333333;              /* Color oscuro para textos y detalles */
+  --color-light: #ffffff;             /* Color claro para fondos */
+  --color-muted: #888888;             /* Color para textos o elementos secundarios */
+  --color-border: #dddddd;            /* Color de bordes y separadores */
+
+  /* =============================
+     TIPOGRAFÍA
+  ============================== */
+  --font-family-base: 'Arial', sans-serif;
+  --font-family-heading: 'Serif', sans-serif;
+  --font-size-base: 1rem;
+  --font-size-h1: 4em;
+  --font-size-h2: 3rem;
+  --font-size-h3: 1.5em;
+  --font-size-paragraph: 1em;
+
+  /* =============================
+     ESPACIADOS Y DIMENSIONES
+  ============================== */
+  --padding: 1rem;
+  --margin: 1rem;
+  --navbar-height: 60px;
+  --card-height: 35em;
+
+  /* =============================
+     ESTILOS ESPECÍFICOS
+  ============================== */
+  /* Estilos para el enlace "Learn More" */
+  --learn-more-font-size: 1rem;
+  --primary-font-color: var(--color-primary);
+  --learn-more-border-color: var(--color-primary);
+  --learn-more-hover-color: #217dbb;
+
+  /* =============================
+     BREAKPOINTS
+  ============================== */
+  --breakpoint-mobile: 768px;
+}
+
+/* =======================================================
+   RESET Y BASE (MOBILE-FIRST)
+========================================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font-family-base);
+  background-color: #f8f8f8;
+  line-height: 1.6;
+  max-width: 100vw;
+}
+
+/* =======================================================
+   NAVBAR
+========================================================= */
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding);
+  background-color: var(--color-light);
+  border-bottom: 1px solid var(--color-border);
+  height: var(--navbar-height);
+}
+
+/* Logo */
+.navbar__logo img {
+  height: 40px;
+  padding: 0.4rem;
+  margin: 0 2rem 0 1.5rem;
+}
+
+/* Enlaces de navegación */
+.navbar__links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.navbar__links li a {
+  text-decoration: none;
+  color: var(--color-dark);
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+.navbar__links li a:hover {
+  color: var(--color-primary);
+}
+
+/* Acciones (perfil y carrito) */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+  margin-right: 2rem;
+}
+.navbar__actions button,
+.navbar__actions a {
+  background: none;
+  border: none;
+  color: var(--color-dark);
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+.navbar__actions button:hover,
+.navbar__actions a:hover {
+  color: var(--color-primary);
+}
+
+/* =======================================================
+   ESTILOS PARA MÓVILES (HAMBURGUESA)
+========================================================= */
+.navbar__toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.hamburger {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-dark);
+  position: relative;
+  transition: all 0.3s ease;
+}
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-dark);
+  left: 0;
+  transition: transform 0.3s ease;
+}
+.hamburger::before {
+  top: -8px;
+}
+.hamburger::after {
+  top: 8px;
+}
+
+/* =======================================================
+   PORTADA SECTION
+========================================================= */
+.portada {
+  position: relative;
+  background-image: url('images/portada.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light);
+}
+.portada-text {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  font-family: var(--font-family-heading);
+  text-align: left;
+}
+.portada-text h1 {
+  font-size: var(--font-size-h1);
+  margin-bottom: 0;
+}
+.portada-text p {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+/* =======================================================
+   CARDS SECTION
+========================================================= */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
+  gap: 3rem;
+  padding: var(--padding);
+}
+.card {
+  background-color: #c7c5c5;
+  border: 1px solid var(--color-border);
+  border-radius: 2rem;
+  padding: var(--padding);
+  transition: transform 0.3s ease;
+  margin: var(--margin);
+  height: var(--card-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.card h3,
+.card p {
+  align-self: flex-start;
+  text-align: left;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', var(--font-family-base);
+}
+.card h3 {
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--margin);
+}
+.card p {
+  font-size: var(--font-size-paragraph);
+  margin-bottom: var(--margin);
+}
+.card img {
+  max-width: 100%;
+  height: 70%;
+  object-fit: contain;
+}
+.button-container {
+  display: flex;
+  width: 100%;
+  margin-top: auto;
+}
+.info {
+  background: var(--color-light);
+  color: var(--color-dark);
+  border: 1px solid var(--color-border);
+  padding: 10px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.color-options {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-left: auto;
+}
+.color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  cursor: pointer;
+}
+.color:hover {
+  border: 2px solid var(--color-dark);
+}
+.dealer {
+  grid-column: span 2;
+  text-align: left;
+  margin-left: 1rem;
+  width: 60%;
+}
+.dealer h2 {
+  font-size: 6em;
+  font-family: 'Times New Roman', Times, serif;
+  line-height: 1;
+  margin-bottom: 3rem;
+}
+.dealer p {
+  font-size: 1.8em;
+  font-family: var(--font-family-base);
+  margin-bottom: 1rem;
+  line-height: 0.9;
+  width: 60%;
+}
+
+/* =======================================================
+   SECCIÓN SIMPLE (TEXTO E IMAGEN)
+========================================================= */
+.discover {
+  position: relative;
+  width: 100%;
+  height: 120vh;
+  background: url('images/section.png') no-repeat center/cover;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 5%;
+}
+.discover-text {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--color-light);
+  max-width: 400px;
+}
+.discover-text h2 {
+  font-size: 2em;
+  margin-bottom: var(--margin);
+}
+.cta-button {
+  display: inline-block;
+  background: var(--color-light);
+  color: var(--color-dark);
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* =======================================================
+   SCROLL
+========================================================= */
+.scroll-section {
+  width: 95%;
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding: var(--padding);
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+.scroll {
+  display: inline-flex;
+  gap: 3rem;
+}
+.scroll-card {
+  background-color: #c7c5c5;
+  border: 1px solid var(--color-border);
+  border-radius: 2rem;
+  padding: var(--padding);
+  transition: transform 0.3s ease;
+  margin: var(--margin);
+  width: 35vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.scroll-card img {
+  max-width: 100%;
+  height: 70%;
+  object-fit: contain;
+}
+.scroll-card button {
+  background: var(--color-light);
+  color: var(--color-dark);
+  border: 1px solid var(--color-border);
+  padding: 10px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-right: auto;
+}
+.scroll-section::-webkit-scrollbar {
+  height: 1rem;
+}
+.scroll-section::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 0.5rem;
+}
+.scroll-section::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 0.5rem;
+}
+.scroll-section::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* =======================================================
+   TENTATION
+========================================================= */
+.tentation {
+  position: relative;
+  height: 100vh;
+  background-image: url('images/section2.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--padding);
+  margin-top: 2rem;
+}
+.tentation-text {
+  max-width: 30em;
+  color: var(--color-light);
+  margin-left: 8rem;
+  margin-bottom: var(--margin);
+}
+.tentation-text h2 {
+  font-size: 3rem;
+  margin-bottom: var(--margin);
+}
+.tentation-text p {
+  max-width: 20em;
+  font-size: 1rem;
+}
+
+/* =======================================================
+   MAYBACH
+========================================================= */
+.maybach {
+  width: 100%;
+  display: flex;
+  background-color: #f8f8f8;
+  padding: 2rem;
+}
+.maybach-content {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "header image"
+    "texto image"
+    "x image";
+  gap: var(--margin);
+}
+.maybach-content h2 {
+  grid-area: header;
+  font-size: var(--font-size-h2);
+  font-weight: bold;
+  width: 100%;
+  margin-top: 12rem;
+}
+.maybach-content p {
+  grid-area: texto;
+  font-size: var(--font-size-paragraph);
+  color: var(--color-muted);
+  width: 70%;
+  margin-top: var(--margin);
+}
+.learn-more {
+  grid-area: texto;
+  font-size: var(--learn-more-font-size);
+  text-decoration: none;
+  color: var(--primary-font-color);
+  font-weight: bold;
+  border-bottom: 2px solid var(--learn-more-border-color);
+  transition: color 0.3s;
+  width: 100%;
+  margin-top: 9rem;
+}
+.learn-more:hover {
+  color: var(--learn-more-hover-color);
+}
+.maybach-content img {
+  grid-area: image;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  padding-bottom: 4rem;
+}
+
+/* =======================================================
+   FOOTER
+========================================================= */
+.site-footer {
+  background-color: #000;
+  color: var(--color-light);
+}
+.contact-banner {
+  background-color: #333;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact-banner p {
+  margin: 1rem 8rem;
+  font-size: 16px;
+}
+.contact-button {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-right: 10rem;
+}
+.newsletter-section {
+  text-align: center;
+  margin: 50px 0;
+}
+.newsletter-section h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+.newsletter-form input {
+  background-color: #000;
+  color: var(--color-light);
+  border: 1px solid var(--color-light);
+  padding: 15px;
+  width: 400px;
+  border-radius: 30px;
+}
+.newsletter-form input::placeholder {
+  color: #bbb;
+}
+.checkbox-container input[type="checkbox"] {
+  appearance: none;
+  background-color: #000;
+  border: 1px solid var(--color-light);
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: var(--color-light);
+  border: 1px solid #000;
+}
+.newsletter-form button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-weight: bold;
+  cursor: pointer;
+}
+.checkbox-container {
+  margin: 20px 0;
+  font-size: 14px;
+}
+.social-icons a {
+  margin: 0 10px;
+  font-size: 20px;
+  color: var(--color-light);
+}
+.footer-column h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-column ul li {
+  margin-bottom: 10px;
+  color: #bbb;
+}
+.footer-column ul li:hover {
+  color: var(--color-light);
+}
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 40px 0;
+  margin-top: 40px;
+}
+
+
+/* =======================================================
+   Estilos Responsive Mobile-First
+========================================================== */
+  @media (max-width: 768px) {
+    /* Ocultamos los enlaces y acciones por defecto en móvil */
+    .navbar__links{
+      display: none;
+    }
+    /* Mostramos el botón hamburguesa */
+    .navbar__toggle {
+      display: block;
+    }
+    /* Cuando el navbar esté activo (menú abierto) */
+    .navbar.active .navbar__links{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      background-color: var(--color-light);
+      position: absolute;
+      top: var(--navbar-height);
+      left: 0;
+      border-top: 1px solid #ddd;
+      padding: var(--padding);
+      z-index: 1000;
+    }
+    .navbar.active .navbar__links {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .portada {
+      height: 20vh; 
+      background-size: contain; 
+      background-repeat: no-repeat; 
+    }
+    .portada-text {
+      position: absolute;
+      font-family: 'Serif', sans-serif;
+      text-align: left;
+      top: 65%;
+    }
+    
+    .portada-text h1 {
+      font-size: 1em; 
+      margin-bottom: 0; 
+    }
+
+    .portada-text p {
+      font-size: 0.75em; 
+      margin-top: 0;
+    }
+    .cards {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 1rem;
+    }
+    .card {
+      height: 40vh;
+    }
+    .card h3,p {
+      display: flex;
+      align-self: center;
+      margin: 0;
+    }
+    .card img {
+      height: 50%;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+    }
+    .color-options {
+      display: none;
+    }
+    .dealer {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin: 0 auto;
+      width: 80%;
+    }
+  
+    .dealer h2 {
+      font-size: 2em;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+  
+    .dealer p {
+      font-size: 1.3em;
+      line-height: 1.2;
+      width: 90%;
+      margin: auto;
+      text-align: center;
+    }
+    .discover {
+      height: 40vh;
+      padding-left: 0;
+    }
+    .discover-text {
+      margin: 2rem;
+    }
+    .scroll {
+      padding-left: 0;
+    }
+    .scroll-card {
+      width: 80vw;
+      height: 50vh;
+    }
+    .tentation {
+      flex-direction: column; 
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: top;
+      max-width: 100%;
+      padding: 0;
+      height: auto;
+
+    }
+    .tentation-text {
+      background: rgba(241, 238, 238, 0.7);
+      color: #000;
+      margin: 50vw 0 2rem 0; 
+      padding: 1rem;
+      width: 100%;
+      text-align: center;
+    }
+    .tentation-text h2 {
+      font-size: 1.5em;
+    }
+    .tentation-text p {
+      font-size: 1rem;
+      text-align: left;
+      padding-left: 3rem;
+    }
+    .maybach-content {
+      padding-top: 1rem;
+      grid-template-areas:
+        "header"
+        "image"
+        "texto"
+        "link";
+    }
+    .maybach-content h2 {
+      font-size: 1.5rem;
+      grid-area: header;
+      margin-top: 0;
+      text-align: center;
+    }
+    .maybach-content p {
+      grid-area: texto;
+      text-align: center;
+      width: 100%;
+      margin-top: 0;
+
+    }
+    .learn-more {
+      grid-area: link;
+      margin-top: 12rem;
+      text-align: center;
+    }
+    .maybach-content img {
+      grid-area: image;
+      padding-bottom: 1rem;
+    }
+    .contact-banner {
+    flex-direction: column; 
+    align-items: center;    
+    }
+    .contact-banner p {
+    margin: 1rem auto;      
+    text-align: center;     
+    }
+    .contact-button {
+    margin-right: 0; 
+    margin-top: 1rem;
+    }
+    .footer-links {
+    flex-direction: column;
+    align-items: center;
+    }
+    .footer-column {
+    margin: 1rem;
+    text-align: center;
+    }
+
+}
+
